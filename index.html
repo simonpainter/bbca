@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Community</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #5ca668;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #e3e6ff;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(92, 166, 104, 0.8), rgba(131, 197, 154, 0.6)), url('/api/placeholder/1200/600') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #83c59a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #6aab80;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #5ca668;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        
+        /* Events Section */
+        .events {
+            padding: 4rem 0;
+            background-color: #e8f4ea;
+        }
+        
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-image {
+            height: 180px;
+            background: url('/api/placeholder/300/180') no-repeat center center/cover;
+        }
+        
+        .event-details {
+            padding: 1.5rem;
+        }
+        
+        .event-date {
+            display: inline-block;
+            background-color: #5ca668;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .event-card h3 {
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        
+        .event-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        /* Forum Section */
+        .forum {
+            padding: 4rem 0;
+        }
+        
+        .topics-list {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .topic {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .topic:last-child {
+            border-bottom: none;
+        }
+        
+        .topic:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        
+        .topic-info h3 {
+            color: #5ca668;
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-meta {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .topic-stats {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background-color: #5ca668;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .subscribe-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .subscribe-form input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        
+        .subscribe-form .btn {
+            background-color: #3d7a48;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #5ca668;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #83c59a;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-form input,
+        .modal-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .modal-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .modal-form .btn {
+            width: 100%;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #5ca668;
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Green Community</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Members</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Our Community</h1>
+            <p>Join our thriving community of like-minded individuals. Share ideas, attend events, and make connections that last.</p>
+            <a href="#" class="btn" id="join-btn">Join Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Join Our Community?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Connect with Others</h3>
+                    <p>Build meaningful relationships with people who share your interests and passions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Attend Events</h3>
+                    <p>Participate in regular meetups, workshops, and social gatherings in your area.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Engage in Discussions</h3>
+                    <p>Share your thoughts and learn from others in our active forum community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-image"></div>
+                    <div class="event-details">
+                        <span class="event-date">May 15, 2025</span>
+                        <h3>Community Meetup</h3>
+                        <p>Join us for our monthly meetup at Central Park. Network, share ideas, and have fun!</p>
+                        <button class="btn register-btn">Register</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"></div>
+                    <div class="event-details">
+                        <span class="event-date">May 22, 2025</span>
+                        <h3>Workshop: Digital Skills</h3>
+                        <p>Learn essential digital skills from industry experts in this interactive workshop.</p>
+                        <button class="btn register-btn">Register</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"></div>
+                    <div class="event-details">
+                        <span class="event-date">June 5, 2025</span>
+                        <h3>Volunteer Day</h3>
+                        <p>Give back to the community by participating in our monthly volunteer initiative.</p>
+                        <button class="btn register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Preview Section -->
+    <section class="forum">
+        <div class="container">
+            <h2 class="section-title">Latest Forum Topics</h2>
+            <div class="topics-list">
+                <div class="topic">
+                    <div class="topic-info">
+                        <h3>Introducing yourself to the community</h3>
+                        <div class="topic-meta">Posted by <strong>JaneDoe</strong> • 2 days ago</div>
+                    </div>
+                    <div class="topic-stats">
+                        <div>24 Replies</div>
+                        <div>86 Views</div>
+                    </div>
+                </div>
+                <div class="topic">
+                    <div class="topic-info">
+                        <h3>Ideas for the next community project</h3>
+                        <div class="topic-meta">Posted by <strong>JohnSmith</strong> • 3 days ago</div>
+                    </div>
+                    <div class="topic-stats">
+                        <div>42 Replies</div>
+                        <div>128 Views</div>
+                    </div>
+                </div>
+                <div class="topic">
+                    <div class="topic-info">
+                        <h3>Book recommendations for summer reading</h3>
+                        <div class="topic-meta">Posted by <strong>BookLover22</strong> • 5 days ago</div>
+                    </div>
+                    <div class="topic-stats">
+                        <div>18 Replies</div>
+                        <div>64 Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with Our Newsletter</h2>
+            <p>Subscribe to receive the latest community news, event announcements, and updates directly in your inbox.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Green Community is a platform dedicated to bringing people together and building stronger, sustainable communities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Members</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: info@greencommunity.com</li>
+                        <li>Phone: (123) 456-7890</li>
+                        <li>Address: 123 Community St, City, Country</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Green Community. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join Our Community</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form class="modal-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <textarea placeholder="Tell us a bit about yourself"></textarea>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('signup-modal');
+        const joinBtn = document.getElementById('join-btn');
+        const closeModal = document.querySelector('.close-modal');
+        
+        joinBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Event registration buttons
+        const registerBtns = document.querySelectorAll('.register-btn');
+        
+        registerBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // You could either open a modal or redirect to a registration page
+                alert('Registration form will open here!');
+            });
+        });
+        
+        // Forum topic click
+        const topics = document.querySelectorAll('.topic');
+        
+        topics.forEach(topic => {
+            topic.addEventListener('click', () => {
+                // Redirect to the topic page
+                alert('This would take you to the full topic page!');
+            });
+        });
+        
+        // Newsletter form submission
+        const subscribeForm = document.querySelector('.subscribe-form');
+        
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = subscribeForm.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You will now receive our newsletter.`);
+            subscribeForm.reset();
+        });
+        
+        // Signup form submission
+        const signupForm = document.querySelector('.modal-form');
+        
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Account created successfully! Welcome to our community!');
+            modal.style.display = 'none';
+            signupForm.reset();
+        });
+    </script>
+</body>
+</html>
