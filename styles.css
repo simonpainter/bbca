@@ -419,6 +419,232 @@ footer {
     width: 100%;
 }
 
+/* Community Section */
+.community-section {
+    padding: 4rem 0;
+    background-color: #e8f4ea;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.community-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.community-card.featured {
+    border-left: 4px solid #5ca668;
+    background: linear-gradient(135deg, #fff 0%, #f0f9f2 100%);
+}
+
+.community-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.community-card h3 {
+    color: #5ca668;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.community-card p {
+    color: #555;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.community-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.community-card ul li {
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    color: #555;
+}
+
+.community-card ul li::before {
+    content: "•";
+    color: #5ca668;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.community-card blockquote {
+    font-style: italic;
+    color: #666;
+    border-left: 3px solid #83c59a;
+    padding-left: 1rem;
+    margin: 0.75rem 0;
+}
+
+.badge {
+    display: inline-block;
+    background: #5ca668;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.badge.ongoing {
+    background: #3d7a48;
+}
+
+/* Equipment Section */
+.equipment-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.equipment-item {
+    text-align: center;
+    padding: 2rem;
+    background: #f8fbf9;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.equipment-item:hover {
+    transform: scale(1.05);
+}
+
+.equipment-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.equipment-item h4 {
+    color: #5ca668;
+    margin-bottom: 0.5rem;
+}
+
+.equipment-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Timeline Section */
+.timeline-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #5ca668 0%, #3d7a48 100%);
+    color: white;
+}
+
+.timeline-section .section-title {
+    color: white;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-left: 80px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 43px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    border: 3px solid #83c59a;
+}
+
+.timeline-year {
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 60px;
+    color: #c8f0d0;
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    flex: 1;
+    margin-left: 1rem;
+}
+
+/* Themes Section */
+.themes-section {
+    padding: 3rem 0;
+    background: #f0f5f0;
+}
+
+.themes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.theme-badge {
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
@@ -455,5 +681,21 @@ footer {
     
     .subscribe-form {
         flex-direction: column;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-item::before {
+        left: 13px;
+    }
+    
+    .community-grid {
+        grid-template-columns: 1fr;
     }
 }
